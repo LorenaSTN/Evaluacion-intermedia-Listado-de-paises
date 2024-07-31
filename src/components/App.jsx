@@ -3,20 +3,22 @@ import dataCountries from "../services/data.json";
 import ListCountries from "./ListCountries";
 import Filter from "./Filter";
 import { useState, useMemo } from "react";
+// import AddCountry from "./AddCountry";
 
 function App() {
   const [inputCountry, setInputCountry] = useState("");
   const [inputContinent, setInputContinent] = useState("value1");
+  const [addNameCountry, setNameCountry] = useState("");
 
+  //FILTRAR
   const handleFilterCountry = (valueInput) => {
-    // console.log(valueInput);
     setInputCountry(valueInput);
   };
 
   const handleFilterContinent = (valueSelect) => {
-    console.log("Filtering by continent:", valueSelect);
     setInputContinent(valueSelect);
   };
+
   const getContinentName = (value) => {
     switch (value) {
       case "value2":
@@ -36,23 +38,21 @@ function App() {
     }
   };
 
-  // const filteredCountries = dataCountries.filter((filterCountry) => {
-  //   return filterCountry.name.official
-  //     .toLowerCase()
-  //     .includes(inputCountry.toLowerCase());
-  // });
+  const filteredCountries = dataCountries.filter((country) => {
+    const matchesCountry = country.name.official
+      .toLowerCase()
+      .includes(inputCountry.toLowerCase());
+    const matchesContinent =
+      inputContinent === "value1" ||
+      country.continents[0] === getContinentName(inputContinent);
+    return matchesCountry && matchesContinent;
+  });
 
-  const filteredCountries = useMemo(() => {
-    return dataCountries.filter((country) => {
-      const matchesCountry = country.name.official
-        .toLowerCase()
-        .includes(inputCountry.toLowerCase());
-      const matchesContinent =
-        inputContinent === "value1" ||
-        country.continents[0] === getContinentName(inputContinent);
-      return matchesCountry && matchesContinent;
-    });
-  }, [dataCountries, inputCountry, inputContinent]);
+  //AÑADIR PAIS
+
+  // const handleAddNameCountry = (valueNameCountry) => {
+  //   return;
+  // };
 
   return (
     <>
@@ -68,6 +68,7 @@ function App() {
           onChangeInput={handleFilterCountry}
           onChangeSelect={handleFilterContinent}
         />
+        {/* <AddCountry onChangeNameCountry={handleAddNameCountry} /> */}
         <ListCountries countriesData={filteredCountries} />
       </main>
     </>
