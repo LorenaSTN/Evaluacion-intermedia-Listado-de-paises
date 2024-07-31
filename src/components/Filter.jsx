@@ -1,6 +1,10 @@
-function Filter({ onChangeInput }) {
+function Filter({ onChangeInput, onChangeSelect }) {
   const handleFilterCountry = (ev) => {
     onChangeInput(ev.target.value);
+  };
+
+  const handleFilterContinent = (ev) => {
+    onChangeSelect(ev.target.value);
   };
 
   return (
@@ -16,7 +20,11 @@ function Filter({ onChangeInput }) {
         />
 
         <label htmlFor="continent">By Continent</label>
-        <select name="continent" id="continent">
+        <select
+          name="continent"
+          id="continent"
+          onChange={handleFilterContinent}
+        >
           <option value="value1">All</option>
           <option value="value2">Africa</option>
           <option value="value3">North America</option>

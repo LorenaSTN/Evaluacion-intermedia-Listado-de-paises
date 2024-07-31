@@ -4,7 +4,7 @@ function ListCountries({ countriesData }) {
   return (
     <div>
       {countriesData.map((countryData) => {
-        return <Country key={countryData.index} item={countryData} />;
+        return <Country key={countryData.name.official} item={countryData} />;
       })}
     </div>
   );
