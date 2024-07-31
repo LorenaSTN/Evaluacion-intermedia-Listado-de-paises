@@ -48,8 +48,6 @@ function App() {
     return matchesCountry && matchesContinent;
   });
 
-  //AÑADIR PAIS
-
   return (
     <>
       <header>
