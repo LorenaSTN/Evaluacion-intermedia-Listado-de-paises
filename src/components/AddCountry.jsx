@@ -1,10 +1,27 @@
-function AddCountry() {
+function AddCountry({
+  onChangeNameCountry,
+  onChangeNameCapital,
+  onChangeFlag,
+  onChangeContinent,
+}) {
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  };
+
   const handleNameCountry = (ev) => {
     onChangeNameCountry(ev.target.value);
   };
 
   const handleNameCapital = (ev) => {
-    onChangeNameCapital;
+    onChangeNameCapital(ev.target.value);
+  };
+
+  const handleFlag = (ev) => {
+    onChangeFlag(ev.target.value);
+  };
+
+  const handleNameContinent = (ev) => {
+    onChangeContinent(ev.target.value);
   };
 
   return (
@@ -28,10 +45,14 @@ function AddCountry() {
         />
 
         <label htmlFor="flag">Flag Emoji:</label>
-        <input type="text" id="flag" value={flag} />
+        <input type="text" id="flag" value={flag} onChange={handleFlag} />
 
         <label htmlFor="continent">Continent:</label>
-        <input id="continent" value={continent}></input>
+        <input
+          id="continent"
+          value={continent}
+          onChange={handleNameContinent}
+        />
 
         <button type="submit" onClick={handleSubmit}>
           Add Country

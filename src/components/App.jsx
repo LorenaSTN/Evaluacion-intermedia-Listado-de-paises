@@ -2,7 +2,7 @@ import "../scss/App.scss";
 import dataCountries from "../services/data.json";
 import ListCountries from "./ListCountries";
 import Filter from "./Filter";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 // import AddCountry from "./AddCountry";
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
           onChangeInput={handleFilterCountry}
           onChangeSelect={handleFilterContinent}
         />
-        {/* <AddCountry onChangeNameCountry={handleAddNameCountry} /> */}
+        {/* <AddCountry onChangeNameCountry={handleAddNameCountry} onChangeNameCapital={}/> */}
         <ListCountries countriesData={filteredCountries} />
       </main>
     </>
