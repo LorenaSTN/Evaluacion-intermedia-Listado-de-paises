@@ -50,10 +50,6 @@ function App() {
 
   //AÑADIR PAIS
 
-  // const handleAddNameCountry = (valueNameCountry) => {
-  //   return;
-  // };
-
   return (
     <>
       <header>
